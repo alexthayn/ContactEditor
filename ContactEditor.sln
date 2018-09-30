@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactEditor", "ContactEditor\ContactEditor.csproj", "{9CEC468A-5D33-4F25-8475-45185AA95CCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactEditorTests", "ContactEditorTests\ContactEditorTests.csproj", "{513AAF6B-00D9-4638-BBBC-5686CEA556CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9CEC468A-5D33-4F25-8475-45185AA95CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CEC468A-5D33-4F25-8475-45185AA95CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CEC468A-5D33-4F25-8475-45185AA95CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513AAF6B-00D9-4638-BBBC-5686CEA556CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513AAF6B-00D9-4638-BBBC-5686CEA556CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513AAF6B-00D9-4638-BBBC-5686CEA556CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513AAF6B-00D9-4638-BBBC-5686CEA556CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
