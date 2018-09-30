@@ -19,6 +19,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0"
+                       Width="80"
                        Text="Mobile Phone"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding MobilePhone}"/>
@@ -26,6 +27,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0"
+                       Width="80"
                        Text="Email"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding Email}"/>
@@ -33,6 +35,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0"
+                       Width="80"
                        Text="Company"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding Company}"/>
@@ -40,6 +43,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0" 
+                       Width="80"
                        Text="Job Title"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding JobTitle}"/>
@@ -47,6 +51,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0" 
+                       Width="80"
                        Text="Birthday"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding Birthday}"/>
@@ -54,6 +59,7 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0"
+                       Width="80"
                        Text="Address"/>
             <TextBlock FontWeight="Bold" 
                        Text="{Binding Address}"/>
@@ -61,10 +67,11 @@
         <StackPanel Orientation="Horizontal"
                     Margin="10">
             <TextBlock Margin="0,0,10,0"
+                       Width="80"
                        Text="Notes"/>
             <TextBlock FontWeight="Bold" 
                        TextWrapping="Wrap"
-                       MaxWidth="200"
+                       MaxWidth="250"
                        Text="{Binding Notes}"/>
         </StackPanel>
     </StackPanel>

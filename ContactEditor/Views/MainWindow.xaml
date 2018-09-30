@@ -21,21 +21,13 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Background="DodgerBlue">
+        <Grid Background="SkyBlue">
             <TextBlock Margin="8"
                        FontSize="24"
                        FontWeight="Bold"
                        FontStyle="Italic"
                        Foreground="Black"
                        Text="Contacts"/>
-            <!--<Grid.Effect>
-                <DropShadowEffect
-                    ShadowDepth="5"
-                    Direction="-90"
-                    Color="Black"
-                    Opacity="0.5"
-                    BlurRadius="4"/>
-            </Grid.Effect>-->
         </Grid>
 
         <Grid Grid.Row="1">
@@ -69,17 +61,20 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Padding="5"
                                 Command="{Binding AddContactCommand}"
-                                Content="Add" />
+                                Content="New Contact"
+                                Background="PaleGreen"/>
                         <Button Margin="10,0,0,0"
                                 Padding="5"
+                                Background="Gainsboro"
                                 Command="{Binding EditContactCommand}"
                                 CommandParameter="{Binding SelectedContact}"
-                                Content="Edit"/>
+                                Content="Edit Selected"/>
                         <Button Margin="10,0,0,0"
                                 Padding="5"
+                                Background="Tomato"
                                 Command="{Binding DeleteContactCommand}"
                                 CommandParameter="{Binding SelectedContact}"
-                                Content="Delete"/>
+                                Content="Delete Selected"/>
                     </StackPanel>
                     <controls:ContactControl
                         Margin="0,10,0,0"
