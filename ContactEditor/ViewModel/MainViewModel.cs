@@ -26,7 +26,7 @@ namespace ContactEditor.ViewModel
             {
                 Set(ref _selectedContact, value);
 
-                //If selected friend property changed, check if Edit and Delete commands can execute
+                //If selected contact property changed, check if Edit and Delete commands can execute
                 DeleteContactCommand.RaiseCanExecuteChanged();
                 EditContactCommand.RaiseCanExecuteChanged();
             }
