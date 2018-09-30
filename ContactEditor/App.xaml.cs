@@ -1,5 +1,7 @@
-﻿using System.Windows;
-using GalaSoft.MvvmLight.Threading;
+﻿using ContactEditor.Services;
+using ContactEditor.Views;
+using GalaSoft.MvvmLight.Ioc;
+using System.Windows;
 
 namespace ContactEditor
 {
@@ -8,9 +10,21 @@ namespace ContactEditor
     /// </summary>
     public partial class App : Application
     {
-        static App()
+        private void StartApplication(object sender, StartupEventArgs e)
         {
-            DispatcherHelper.Initialize();
+            SimpleIoc.Default.Register<IDataProvider, SqliteDataProvider>();
+            SimpleIoc.Default.Register<IEditWindowController, EditWindowController>();
+            SimpleIoc.Default.Register<IDialogService, DialogService>();
+
+            App.Current.DispatcherUnhandledException += (s, args) =>
+            {
+                SimpleIoc.Default.GetInstance<IDialogService>().Exception(args.Exception);
+                args.Handled = true;
+            };
+
+            MainWindow mainWindow = new MainWindow();
+            App.Current.MainWindow = mainWindow;
+            mainWindow.Show();
         }
     }
 }

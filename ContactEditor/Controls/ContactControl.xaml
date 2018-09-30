@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="ContactEditor.Controls.ContactControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:ContactEditor.Converters"
+             xmlns:local="clr-namespace:ContactEditor.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Thickness x:Key="InfoMargin">0,10,0,0</Thickness>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock Text="{Binding FullName}"
+                   FontSize="36"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+       
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0"
+                       Text="Mobile Phone"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding MobilePhone}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0"
+                       Text="Email"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding Email}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0"
+                       Text="Company"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding Company}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0" 
+                       Text="Job Title"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding JobTitle}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0" 
+                       Text="Birthday"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding Birthday}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0"
+                       Text="Address"/>
+            <TextBlock FontWeight="Bold" 
+                       Text="{Binding Address}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Margin="10">
+            <TextBlock Margin="0,0,10,0"
+                       Text="Notes"/>
+            <TextBlock FontWeight="Bold" 
+                       TextWrapping="Wrap"
+                       MaxWidth="200"
+                       Text="{Binding Notes}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

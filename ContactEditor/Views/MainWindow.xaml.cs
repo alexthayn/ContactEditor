@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using ContactEditor.ViewModel;
 
-namespace ContactEditor
+namespace ContactEditor.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -14,7 +14,6 @@ namespace ContactEditor
         public MainWindow()
         {
             InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
         }
     }
 }
