@@ -9,6 +9,7 @@
         Height="500"
         MaxWidth="600"
         Title="Contact Editor"
+        WindowStartupLocation="CenterScreen"
         DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
     
     <Window.Resources>
@@ -18,10 +19,32 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
+        
+        <!--Menu-->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Add New Contact" 
+                              Command="{Binding AddContactCommand}"/>                    
+                    <MenuItem Header="_Exit"
+                              Command="{Binding ExitProgramCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Edit Selected Contact" 
+                              Command="{Binding EditContactCommand}"
+                              CommandParameter="{Binding SelectedContact}"/>
+                    <MenuItem Header="_Delete Selected Contact"
+                              Command="{Binding DeleteContactCommand}"
+                              CommandParameter="{Binding SelectedContact}"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
 
-        <Grid Background="SkyBlue">
+        <!--Title-->
+        <Grid Grid.Row="1" Background="SkyBlue">
             <TextBlock Margin="8"
                        FontSize="24"
                        FontWeight="Bold"
@@ -30,7 +53,7 @@
                        Text="Contacts"/>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="200"/>
                 <ColumnDefinition Width="*"/>

@@ -12,7 +12,7 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBlock Text="{Binding FullName}"
-                   FontSize="36"
+                   FontSize="24"
                    FontWeight="Bold"
                    HorizontalAlignment="Center"/>
        

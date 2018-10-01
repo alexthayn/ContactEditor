@@ -44,6 +44,7 @@ namespace ContactEditor.ViewModel
             AddContactCommand = new RelayCommand(AddContact);
             EditContactCommand = new RelayCommand<Contact>(EditContact, contact => SelectedContact != null);
             DeleteContactCommand = new RelayCommand<Contact>(DeleteContact, contact => SelectedContact != null);
+            ExitProgramCommand = new RelayCommand(ExitProgram);
 
             AllContacts = new ObservableCollection<Contact>(dataProvider.GetAllContacts().OfType<Contact>());
         }
@@ -51,6 +52,7 @@ namespace ContactEditor.ViewModel
         public RelayCommand AddContactCommand { get; set; }
         public RelayCommand<Contact> EditContactCommand { get; set; }
         public RelayCommand<Contact> DeleteContactCommand { get; set; }
+        public RelayCommand ExitProgramCommand { get; set; }
 
         public IEditWindowController EditWindowController { get; }
         public IDialogService DialogService { get; }
@@ -88,6 +90,11 @@ namespace ContactEditor.ViewModel
                 //re-selected the original item
                 SelectedContact = AllContacts[index];
             }
+        }
+
+        private void ExitProgram()
+        {
+            System.Windows.Application.Current.Shutdown();
         }
 
         ////public override void Cleanup()

@@ -10,6 +10,7 @@
         DataContext="{Binding EditViewModel, Source={StaticResource Locator}}"
         ShowInTaskbar="False"
         WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterOwner"
         Title="Add/Edit Contact" Height="550" Width="300">
     <Grid>
         <Grid.Resources>
