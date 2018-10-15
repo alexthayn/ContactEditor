@@ -11,6 +11,10 @@
         <Thickness x:Key="InfoMargin">0,10,0,0</Thickness>
     </UserControl.Resources>
     <StackPanel>
+        <ComboBox DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext}"
+                  ItemsSource="{Binding AllContacts}"
+                  DisplayMemberPath="FullName"
+                  SelectedItem="{Binding SelectedContact, Mode=TwoWay}"/>
         
         <TextBlock Text="{Binding FullName}"
                    FontSize="24"
