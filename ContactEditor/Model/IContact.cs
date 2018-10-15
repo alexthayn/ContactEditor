@@ -15,7 +15,7 @@ namespace Models
         string Company { get; set; }
         string JobTitle { get; set; }
         string MobilePhone { get; set; }
-        string Birthday { get; set; }
+        DateTime Birthday { get; set; }
         string Email { get; set; }
         string Address { get; set; }
         string Notes { get; set; }

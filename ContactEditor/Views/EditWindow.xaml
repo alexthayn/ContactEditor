@@ -6,12 +6,16 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:ContactEditor"
+        xmlns:converters="clr-namespace:ContactEditor.Converters"
         mc:Ignorable="d"
         DataContext="{Binding EditViewModel, Source={StaticResource Locator}}"
         ShowInTaskbar="False"
         WindowStyle="ToolWindow"
         WindowStartupLocation="CenterOwner"
         Title="Add/Edit Contact" Height="550" Width="300">
+    <Window.Resources>
+        <converters:InverseAndBooleansToBooleanConverter x:Key="InverseAndBooleansToBooleanConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <Thickness x:Key="InfoMargin">0,10,0,0</Thickness>
@@ -21,18 +25,22 @@
             <!--First Name-->
             <TextBlock Text="First Name"/>
             <TextBox
+                Name="FirstName"
                 Margin="0,5,0,0"
                 Padding="2"
                 FontWeight="Bold"
-                Text="{Binding CurrentContact.FirstName, Mode=TwoWay}"/>
+                Style="{StaticResource TextBoxValidationStyle}"
+                Text="{Binding CurrentContact.FirstName, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
             
             <!--Last Name-->
             <TextBlock Text="Last Name"/>
             <TextBox
+                Name="LastName"
                 Margin="0,5,0,0"
                 Padding="2"
                 FontWeight="Bold"
-                Text="{Binding CurrentContact.LastName, Mode=TwoWay}"/>
+                Style="{StaticResource TextBoxValidationStyle}"
+                Text="{Binding CurrentContact.LastName, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
             
             <!--Company-->
             <TextBlock Text="Company Name"/>
@@ -62,17 +70,21 @@
             <TextBlock Margin="{StaticResource InfoMargin}" 
                        Text="Birthday"/>
             <TextBox
+                Name="Birthday"
                 Margin="0,5,0,0"
                 FontWeight="Bold"
-                Text="{Binding CurrentContact.Birthday, Mode=TwoWay}"/>
+                Style="{StaticResource TextBoxValidationStyle}"
+                Text="{Binding CurrentContact.Birthday, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
 
             <!--Email-->
             <TextBlock Text="Email"/>
             <TextBox
+                Name="Email"
                 Margin="0,5,0,0"
                 Padding="2"
                 FontWeight="Bold"
-                Text="{Binding CurrentContact.Email, Mode=TwoWay}"/>
+                Style="{StaticResource TextBoxValidationStyle}"
+                Text="{Binding CurrentContact.Email, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
             
             <!--Address-->
             <TextBlock Text="Address"/>
@@ -99,7 +111,17 @@
                 Orientation="Horizontal">
                 <Button Padding="5"
                         Command="{Binding SaveDataCommand}"
-                        Content="Save"/>
+                        Content="Save">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource InverseAndBooleansToBooleanConverter}"
+                                      Mode="TwoWay">
+                            <Binding ElementName="FirstName" Path="(Validation.HasError)"/>
+                            <Binding ElementName="LastName" Path="(Validation.HasError)"/>
+                            <Binding ElementName="Email" Path="(Validation.HasError)"/>
+                            <Binding ElementName="Birthday" Path="(Validation.HasError)"/>
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
 
                 <Button Margin="10,0,0,0"
                         Padding="5"

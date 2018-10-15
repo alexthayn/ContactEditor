@@ -81,7 +81,7 @@ namespace ContactEditor.Services
                             contact.Company = row["Company"] != null ? row["Company"].ToString() : string.Empty;
                             contact.JobTitle = row["JobTitle"] != null ? row["JobTitle"].ToString() : string.Empty;
                             contact.MobilePhone = row["MobilePhone"] != null ? row["MobilePhone"].ToString() : string.Empty;
-                            contact.Birthday = row["Birthday"] != null ?(row["Birthday"]).ToString() : string.Empty;
+                            contact.Birthday = row["Birthday"] != null ? DateTime.Parse(row["Birthday"].ToString()) : System.DateTime.MinValue;
                             contact.Email = row["Email"] != null ? row["Email"].ToString() : string.Empty;
                             contact.Address = row["Address"] != null ? row["Address"].ToString() : string.Empty;
                             contact.Notes = row["Notes"] != null ? row["Notes"].ToString() : string.Empty;
@@ -111,7 +111,7 @@ namespace ContactEditor.Services
                         contact.Company = dr["Company"] != null ? dr["Company"].ToString() : string.Empty;
                         contact.JobTitle = dr["JobTitle"] != null ? dr["JobTitle"].ToString() : string.Empty;
                         contact.MobilePhone = dr["MobilePhone"] != null ? dr["MobilePhone"].ToString() : string.Empty;
-                        contact.Birthday = dr["Birthday"] != null ? (dr["Birthday"]).ToString() : string.Empty;
+                        contact.Birthday = dr["Birthday"] != null ? DateTime.Parse((dr["Birthday"]).ToString()) : DateTime.MinValue;
                         contact.Email = dr["Email"] != null ? dr["Email"].ToString() : string.Empty;
                         contact.Address = dr["Address"] != null ? dr["Address"].ToString() : string.Empty;
                         contact.Notes = dr["Notes"] != null ? dr["Notes"].ToString() : string.Empty;
@@ -130,7 +130,7 @@ namespace ContactEditor.Services
                 '{contact.Company}',
                 '{contact.JobTitle}',
                 '{contact.MobilePhone}',
-                '{contact.Birthday}',
+                '{contact.Birthday.ToString()}',
                 '{contact.Email}',
                 '{contact.Address}',
                 '{contact.Notes}')";
@@ -145,7 +145,7 @@ namespace ContactEditor.Services
                 Company='{contact.Company}',
                 JobTitle='{contact.JobTitle}',
                 MobilePhone='{contact.MobilePhone}',
-                Birthday='{contact.Birthday}',
+                Birthday='{contact.Birthday.ToString()}',
                 Email='{contact.Email}',
                 Address='{contact.Address}',
                 Notes='{contact.Notes}'

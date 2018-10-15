@@ -68,7 +68,8 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock FontSize="16" Text="{Binding FullName}">
+                        <TextBlock FontSize="16" 
+                                   Text="{Binding FullName}">
                             <TextBlock.InputBindings>
                                 <MouseBinding Command="{Binding DataContext.EditContactCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                                               CommandParameter="{Binding DataContext.SelectedContact, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"

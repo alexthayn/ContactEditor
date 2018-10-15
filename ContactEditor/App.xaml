@@ -12,6 +12,16 @@
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
+        <Style TargetType="{x:Type TextBox}" 
+               x:Key="TextBoxValidationStyle">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" 
+                         Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
     
 </Application>

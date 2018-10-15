@@ -1,13 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Contact : ObservableObject, IContact
+    public class Contact : ObservableObject, IContact, IDataErrorInfo, INotifyPropertyChanged
     {
         private string _id;
         private string _firstName;
@@ -15,11 +17,10 @@ namespace Models
         private string _company;
         private string _jobTitle;
         private string _mobilePhone;
-        private string _birthday;
+        private DateTime _birthday;
         private string _email;
         private string _address;
         private string _notes;
-
 
         public string Id
         {
@@ -33,7 +34,11 @@ namespace Models
         public string FirstName
         {
             get { return _firstName; }
-            set { Set(ref _firstName, value); }
+            set
+            {
+                Set(ref _firstName, value);
+                ValidateFirstName();
+            }
         }
 
         /// <summary>
@@ -42,7 +47,11 @@ namespace Models
         public string LastName
         {
             get { return _lastName; }
-            set { Set(ref _lastName, value); }
+            set
+            {
+                Set(ref _lastName, value);
+                ValidateLastName();
+            }
         }
 
         /// <summary>
@@ -83,10 +92,14 @@ namespace Models
         /// <summary>
         /// Get or set Birthday value
         /// </summary>
-        public string Birthday
+        public DateTime Birthday
         {
             get { return _birthday; }
-            set { Set(ref _birthday, value); }
+            set
+            {
+                Set(ref _birthday, value);
+                ValidateBirthday();
+            }
         }
 
         /// <summary>
@@ -95,7 +108,11 @@ namespace Models
         public string Email
         {
             get { return _email; }
-            set { Set(ref _email, value); }
+            set
+            {
+                Set(ref _email, value);
+                ValidateEmail();
+            }
         }
 
         /// <summary>
@@ -114,6 +131,56 @@ namespace Models
         {
             get { return _notes; }
             set { Set(ref _notes, value); }
+        }
+
+        //IDataErrorInfo Implementation
+        public Dictionary<string, string> errors = new Dictionary<string, string>();
+        public string Error => throw new NotImplementedException();
+        public string this[string columnName] => errors.ContainsKey(columnName) ? errors[columnName] : null;
+
+        //Validation methods
+        private void ValidateFirstName()
+        {
+            if (FirstName == null || FirstName.Any(Char.IsWhiteSpace))
+                errors[nameof(FirstName)] = "First name must be valid with no extra whitespace.";
+            else
+                errors[nameof(FirstName)] = null;
+
+            OnPropertyChanged(nameof(FirstName));
+        }
+
+        private void ValidateLastName()
+        {
+            if (LastName == null || LastName.Any(Char.IsWhiteSpace))
+                errors[nameof(LastName)] = "Last name must be valid with no extra whitespace.";
+            else
+                errors[nameof(LastName)] = null;
+            OnPropertyChanged(nameof(LastName));
+        }
+
+        private void ValidateBirthday()
+        {
+            if (Birthday > System.DateTime.Today || Birthday < DateTime.Now.AddYears(-150))
+                errors[nameof(Birthday)] = "Please enter a valid birthdate between now and the last 150 years.";
+            else
+                errors[nameof(Birthday)] = null;
+
+            OnPropertyChanged(nameof(Birthday));
+        }
+
+        private void ValidateEmail()
+        {
+            if (!Email.Contains('@') && !Email.Contains('.'))
+                errors[nameof(Email)] = "Please enter a valid email of the form myemail@email.com";
+            else
+                errors[nameof(Email)] = null;
+            OnPropertyChanged(nameof(Email));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
