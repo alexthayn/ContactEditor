@@ -17,6 +17,11 @@ namespace ContactEditor.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private ObservableCollection<Contact> _allContacts;
+        private readonly ObservableCollection<Contact> _sampleData = new ObservableCollection<Contact>
+        {
+            new Contact{ FirstName = "SpongeBob", LastName = "Squarepants", Birthday = new System.DateTime(2000, 3, 23) }
+        };
+
         private Contact _selectedContact;
 
         public Contact SelectedContact
@@ -64,6 +69,10 @@ namespace ContactEditor.ViewModel
             set { Set(ref _allContacts, value); }
         }
 
+        public ObservableCollection<Contact> SampleData
+        {
+            get { return _sampleData; }
+        }
 
         private void AddContact()
         {
