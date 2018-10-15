@@ -55,12 +55,6 @@
                        FontStyle="Italic"
                        Foreground="Black"
                        Text="Contacts"/>
-            
-            <ComboBox Margin="10" 
-                      Grid.Column="1"
-                      ItemsSource="{Binding AllContacts}"
-                      SelectedItem="{Binding SelectedContact}"
-                      DisplayMemberPath="FullName"/>
         </Grid>
 
         <Grid Grid.Row="2">
