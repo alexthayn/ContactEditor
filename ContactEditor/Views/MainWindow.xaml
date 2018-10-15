@@ -59,7 +59,7 @@
             <ComboBox Margin="10" 
                       Grid.Column="1"
                       ItemsSource="{Binding AllContacts}"
-                      SelectedItem="{Binding SelectedContact, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedContact}"
                       DisplayMemberPath="FullName"/>
         </Grid>
 
