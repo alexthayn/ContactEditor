@@ -80,6 +80,7 @@
     <Compile Include="ConverterTests\BooleanToVisibilityConverterTest.cs" />
     <Compile Include="ConverterTests\NullToVisibilityConverterTests.cs" />
     <Compile Include="ModelTests\ModelTests.cs" />
+    <Compile Include="ModelTests\ValidationTests.cs" />
     <Compile Include="ServiceTests\EditWindowControllerTests.cs" />
     <Compile Include="ViewModelTests\EditVMTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

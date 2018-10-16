@@ -5,12 +5,32 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Models;
 using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ContactEditor.ViewModel
 {
-    public class EditViewModel : ViewModelBase
+    public class EditViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        public Contact CurrentContact { get; set; }
+        private ObservableCollection<Contact> _sampleData;
+        
+        public ObservableCollection<Contact> SampleData { get; set; }
+
+        private Contact _currentContact;
+        public Contact CurrentContact
+        {
+            get
+            {
+                return _currentContact;
+            }
+            set
+            {
+                _currentContact = value;
+                OnPropertyChanged(nameof(CurrentContact));
+            }
+        }
+
         public IDataProvider DataProvider { get; }
         public IDialogService DialogService { get; set; }
         public RelayCommand SaveDataCommand { get; set; }
@@ -21,6 +41,12 @@ namespace ContactEditor.ViewModel
             Args = args;
             DataProvider = dataProvider;
             DialogService = dialogService;
+
+            var c1 = new Contact { Id = Guid.NewGuid().ToString(), FirstName = "SpongeBob", LastName = "Squarepants", Birthday = new System.DateTime(2000, 3, 23), Company = "Krusty Krab", JobTitle = "Fry Cook", Email = "spongebob@squarepants.com", MobilePhone = "1234546430", Address = "Bikini Bottom" };
+            var c2 = new Contact { Id = Guid.NewGuid().ToString(), FirstName = "Patrick", LastName = "Star", Birthday = new DateTime(2010, 3, 14), Company = "Unemployed", JobTitle = "none", Email = "patrick@star.com", MobilePhone = "1234567891", Address = "Under a rock" };
+            SampleData = new ObservableCollection<Contact>();
+            SampleData.Add(c1);
+            SampleData.Add(c2);
 
             switch (args.Type)
             {
@@ -75,6 +101,12 @@ namespace ContactEditor.ViewModel
             {
                 Messenger.Default.Send(new CloseWindowEventArgs());
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

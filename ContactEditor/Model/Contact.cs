@@ -155,6 +155,7 @@ namespace Models
                 errors[nameof(LastName)] = "Last name must be valid with no extra whitespace.";
             else
                 errors[nameof(LastName)] = null;
+
             OnPropertyChanged(nameof(LastName));
         }
 

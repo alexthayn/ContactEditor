@@ -11,8 +11,8 @@
         DataContext="{Binding EditViewModel, Source={StaticResource Locator}}"
         ShowInTaskbar="False"
         WindowStyle="ToolWindow"
-        WindowStartupLocation="CenterOwner"
-        Title="Add/Edit Contact" Height="550" Width="300">
+        WindowStartupLocation="CenterScreen"
+        Title="Add/Edit Contact" Height="575" Width="300">
     <Window.Resources>
         <converters:InverseAndBooleansToBooleanConverter x:Key="InverseAndBooleansToBooleanConverter"/>
     </Window.Resources>
@@ -20,8 +20,16 @@
         <Grid.Resources>
             <Thickness x:Key="InfoMargin">0,10,0,0</Thickness>
         </Grid.Resources>
-
+    
         <StackPanel Margin="10">
+            <TextBlock Text="Sample Contacts"/>
+            <ComboBox Margin="10"
+                      Grid.Column="1"
+                      ItemsSource="{Binding SampleData}"
+                      SelectedItem="{Binding CurrentContact, Mode=TwoWay}"
+                      DisplayMemberPath="FullName"
+                      Text="Sample Contacts"/>
+            
             <!--First Name-->
             <TextBlock Text="First Name"/>
             <TextBox
